@@ -37,7 +37,7 @@ For this code review, I need help with the following two areas:
 <tr>
 <td>Defensive programming</td>
 <td>1. Validate inputs <br> 2. Add progress messages <br> 3. Add warning messages </td>
-<td>1. Pat and Josh </td>
+<td>1. Pat, Josh, and Samara </td>
 </tr>
 <tr>
 <td>General code improvement</td>
