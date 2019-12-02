@@ -38,13 +38,9 @@ filter_shared_by_reads <- function(shared_df, n_reads_int) {
     min()
   
   # Pulling sample names WITHOUT enough reads for subsampling
-  remove_samples <- shared_df %>% 
-    filter(numReads < subsample_reads) %>% # Finding samples that don't have enough reads for subsample
-    pull(sample)
-  
-  # Removing samples without enough reads from downstream analysis
   filtered_shared <- shared_df %>% 
-    filter(!(sample %in% remove_samples))
+    filter(numReads > subsample_reads) # Finding samples that don't have enough reads for subsample
+    
   
   return(filtered_shared)
   
@@ -55,9 +51,8 @@ filter_shared_by_reads <- function(shared_df, n_reads_int) {
 subsample_shared_row <- function(shared_df, sample_chr) {
   
   # Pulling out list of bins and sample counts for creating sampling vector
-  bin_names <- str_subset(names(shared_df), "^Bin\\d+$") # Pulling bin names from col names
   sample_counts <- as.numeric(shared_df[shared_df$sample == sample_chr, bin_names]) # Pulling bin counts for one row at a time
-  subsample_reads <- min(shared_df$numReads)
+
   
   # Creating sampling vector
   sampling_vector <- rep(bin_names, sample_counts) # Repeats each bin name for as many read counts for that bin
@@ -102,6 +97,8 @@ shared <- read_tsv(sharedFile, col_types = cols())
 # Removing samples without enough reads
 filtered_shared <- filter_shared_by_reads(shared, nReads)
 
+bin_names <- str_subset(names(shared_df), "^Bin\\d+$") # Pulling bin names from col names
+subsample_reads <- min(shared_df$numReads)
 # Subsampling the shared file
 sub_shared <- subsample_shared(filtered_shared)
 
