@@ -24,7 +24,7 @@ For this code review, I need help with the following two areas:
 <table>
 <thead>
 <tr>
-<th>Topic</th>
+<th>Theme</th>
 <th>Goals</th>
 <th>Teams</th>
 </tr>
@@ -32,7 +32,7 @@ For this code review, I need help with the following two areas:
 <tbody>
 <tr>
 <td>Defensive programming</td>
-<td>1. Validate inputs <br> 2. Add progress messages <br> 2. Add warning messages </td>
+<td>1. Validate inputs <br> 2. Add progress messages <br> 3. Add warning messages </td>
 <td>1. Pat and Josh <br> 2. Begüm and Lucas </td>
 </tr>
 <tr>
@@ -43,4 +43,4 @@ For this code review, I need help with the following two areas:
 </tbody>
 </table>
 
-Groups will be given 30 min to work on their tasks and the last 20 min (5 min/group) will be used for discussion.
+Groups will be given 30 min to work on their tasks and the last 20 min (5 min/group) will be used for discussion. Please create a branch of this repo and submit your work as a pull request when finished.
