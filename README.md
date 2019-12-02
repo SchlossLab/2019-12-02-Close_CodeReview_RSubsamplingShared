@@ -1,5 +1,7 @@
 # Code Review - Subsampling metagenomic shared files in R
 
+## Introduction
+
 One of the last steps in my viral metagenomic pipeline is to rarefy my shared files to ensure even sampling
 across samples. This process is slightly different from 16S pipelines because the read counts need to be normalized
 based on bin lengths after subsampling but before downstream modeling.
@@ -18,6 +20,8 @@ expected input/output files. The script is divided up into three main parts as s
 ![Image of pipeline rarefaction steps](images/scriptOutline.png)
 
 <br />
+
+## Tasks
 
 For this code review, I need help with the following two areas:
 
