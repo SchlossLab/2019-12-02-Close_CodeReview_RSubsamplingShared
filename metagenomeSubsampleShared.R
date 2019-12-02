@@ -11,8 +11,8 @@
 args <- commandArgs(trailingOnly = TRUE)
 
 # Variables defined by user
-sharedFile <- args[1]
-nReads <- as.integer(args[2]) # Number of reads to subsample to
+sharedFile <- "metagenome.shared" #args[1]
+nReads <- 5e5 #as.integer(args[2]) # Number of reads to subsample to
 
 
 # Other variables
@@ -97,13 +97,25 @@ subsample_shared <- function(shared_df) {
 system(paste("mkdir -p", outDir))
 
 # Reading in data files
-shared <- read_tsv(sharedFile, col_types = cols())
+print("reading tsv")
+system.time({
+  shared <- read_tsv(sharedFile, col_types = cols())
+})
 
 # Removing samples without enough reads
-filtered_shared <- filter_shared_by_reads(shared, nReads)
+print("filtering")
+system.time({
+  filtered_shared <- filter_shared_by_reads(shared, nReads)
+})
 
 # Subsampling the shared file
-sub_shared <- subsample_shared(filtered_shared)
+print("subsampling")
+system.time({
+  sub_shared <- subsample_shared(filtered_shared)
+})
 
 # Write out the subsampled shared file
-write_tsv(sub_shared, path = paste0(outDir, "metagenome.subsample.shared"))
+print("write tsv")
+system.time({
+  write_tsv(sub_shared, path = paste0(outDir, "metagenome.subsample.shared"))
+})
